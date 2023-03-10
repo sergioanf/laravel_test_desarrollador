@@ -12,29 +12,23 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('characters', function (Blueprint $table) {
-            $table->unsignedBigInteger('id');
+            $table->increments('id');
             $table->unsignedBigInteger('character_id')->unique();
             $table->string('gender', 10);
-            $table->string('image', 50);
+            $table->string('image', 250);
             $table->string('name', 50);
             $table->string('species', 20);
             $table->string('status', 20);
             $table->string('created', 20);
+            $table->unsignedBigInteger('location_id')->default(null)->nullable();
+
+            $table->foreign('location_id')
+                ->references('location_id')
+                ->on('locations')
+                ->onDelete('cascade');
+                
             $table->timestamps();
-
-
-           // $table->string('location', 20);
-           // $table->string('episode', 20);
-           /*
-           $table->unsignedBigInteger('persona_id');
-            $table->foreign('persona_id')
-                ->references('id')
-                ->on('personas')
-                ->onDelete('cascade')
-                ->onUpadte('cascade');
-                //->onDelete('set_null');
-            */
-            
+    
         });
     }
 

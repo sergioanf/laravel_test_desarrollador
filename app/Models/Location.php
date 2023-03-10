@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Episode extends Model
+class Location extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -13,17 +13,18 @@ class Episode extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'episode_id',
-        'air_date',
+        'location_id',
+        'name',
         'created',
-        'episode',
+        'type',
         'name'
     ];
+
     use HasFactory;
 
     public function characters()
     {
-        return $this->belongsToMany(Character::class);
+        return $this->hasMany(Character::class);
     }
-
 }
+ 

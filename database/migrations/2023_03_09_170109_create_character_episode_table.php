@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('characters_episodes', function (Blueprint $table) {
+        Schema::create('character_episode', function (Blueprint $table) {
   
             $table->unsignedBigInteger('character_id');
             $table->unsignedBigInteger('episode_id');
@@ -19,8 +19,6 @@ return new class extends Migration
             $table->foreign('character_id')->references('character_id')->on('characters')->onDelete('cascade');
             $table->foreign('episode_id')->references('episode_id')->on('episodes')->onDelete('cascade');
             
-
-            $table->timestamps();
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('characters_episodes');
+        Schema::dropIfExists('character_episode');
     }
 };

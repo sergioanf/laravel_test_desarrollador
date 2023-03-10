@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('episodes', function (Blueprint $table) {
-            $table->unsignedBigInteger('id');
+            $table->increments('id');
             $table->unsignedBigInteger('episode_id')->unique();
             $table->dateTime('air_date');
             $table->dateTime('created');

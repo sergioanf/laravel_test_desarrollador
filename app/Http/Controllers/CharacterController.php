@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use App\Models\Character;
+use App\Services\CharacterService;
 
 class CharacterController extends Controller
 {
@@ -12,26 +13,15 @@ class CharacterController extends Controller
      */
     public function index()
     {
-        $body = '{"query":"query Query($page: Int, $filter: FilterCharacter, $episodesPage2: Int, $episodesFilter2: FilterEpisode) {\\n  characters(page: $page, filter: $filter) {\\n    info {\\n      prev\\n      pages\\n      next\\n      count\\n    }\\n    results {\\n      created\\n      gender\\n      id\\n      image\\n      name\\n      origin {\\n        id\\n      }\\n      location {\\n        id\\n      }\\n      species\\n      status\\n      episode {\\n        id\\n      }\\n    }\\n  }\\n  episodes(page: $episodesPage2, filter: $episodesFilter2) {\\n    info {\\n      count\\n      next\\n      pages\\n      prev\\n    }\\n    results {\\n      air_date\\n      created\\n      episode\\n      id\\n      name\\n      characters {\\n        id\\n      }\\n    }\\n  }\\n  locations {\\n    results {\\n      created\\n      dimension\\n      id\\n      name\\n      type\\n    }\\n  }\\n}\\n","variables":{}}';
+       $data = CharacterService::fetch();
+      
+       if( $data ){
+        $episodes = CharacterService::saveEpisodes( $data->episodes->results );
+        $locations = CharacterService::saveLocations( $data->locations->results );
+        $characters = CharacterService::saveCharacters( $data->characters->results );
+       }
 
-        $response = Http::withBody(
-            $body
-        )->post('https://rickandmortyapi.com/graphql');
-
-        if(  $response->status()  == 200){
-           $data = json_decode( $response->body() );
-        }
-        else{
-            $response->status();
-        }
-        
-        return response()->json(
-            $data->data->locations->results[0]
-        );
-
-
-
-     
+       return $characters;
     }
 
     /**
@@ -81,4 +71,19 @@ class CharacterController extends Controller
     {
         //
     }
+    
+
+    /**
+     * Fetch the characters data from an external API
+     */
+    public function fetchRemoteData()
+    {
+        $data= (object) array('data' => null);
+    
+       
+        //$character->save();
+
+    }
+    
+    
 }
