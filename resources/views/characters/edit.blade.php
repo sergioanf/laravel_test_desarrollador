@@ -2,6 +2,7 @@
 
 @section('title', 'Create Characters')
 @section('action', 'Save')
+@section('entity_name', 'characters')
 
 @section('content')
 
@@ -61,10 +62,10 @@
 
                     @foreach ( $locations as $key => $val) 
                         
-                    @if ( old('location_id', $character->location_id) == $val->location_id )
-                        <option value="{{ $val->location_id }}" selected>{{ $locations[$key]->name }}</option>
+                    @if ( old('id', $character->location_id) == $val->id )
+                        <option value="{{ $val->id }}" selected>{{ $locations[$key]->name }}</option>
                     @else
-                        <option value="{{ $val->location_id}}">{{ $val->name }}</option>
+                        <option value="{{ $val->id}}">{{ $val->name }}</option>
                     @endif
  
                     @endforeach                

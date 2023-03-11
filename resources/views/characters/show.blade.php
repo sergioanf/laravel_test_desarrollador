@@ -1,6 +1,7 @@
 @extends("layouts.plantilla")
 
 @section("title", "show | " . $character->name )
+@section('entity_name', 'characters')
 
 
 @section("content")

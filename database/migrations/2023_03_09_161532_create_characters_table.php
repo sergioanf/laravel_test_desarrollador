@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('location_id')->default(null)->nullable();
 
             $table->foreign('location_id')
-                ->references('location_id')
+                ->references('id')
                 ->on('locations')
                 ->onDelete('cascade');
     

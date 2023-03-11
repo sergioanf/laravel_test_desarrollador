@@ -1,7 +1,7 @@
 @extends('layouts.plantilla') 
 
 @section('title', 'Characters')
-
+@section('entity_name', 'characters')
 @section('content')
 
 <div class="container">
@@ -15,7 +15,15 @@
 
     @endif
 
-<h1 class="title has-background-white has-text-black m-0 p-2 is-6">Characters list</h1>
+ <h2 class="title has-background-white has-text-black m-0 p-2 is-6 has-background-warning">
+    Character List
+  </h2>
+  
+  <h2 class="title has-background-white has-text-black m-0 p-2 is-6">
+    <a href="{{ route('locations.index') }}">
+        Location list
+      </a>
+  </h2>
 
 
 <table class="table is-fullwidth is-bordered is-striped">

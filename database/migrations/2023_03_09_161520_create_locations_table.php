@@ -12,13 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('locations', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedBigInteger('location_id')->unique();
-            $table->datetime('created');
+            $table->bigIncrements('id')->unique();
+            $table->date('created')->default(date("Y-m-d"));
             $table->string('name');
             $table->string('type');
             
-            $table->timestamps();
         });
     }
 

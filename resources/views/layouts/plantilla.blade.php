@@ -45,7 +45,7 @@
         .navbar-item{
             padding: 1em 2em
         }
-        h1{
+        h2{
             display: inline-block;
             z-index: 99999;
             position: relative;
@@ -84,9 +84,9 @@
           <div class="navbar-item">
             <div class="field is-grouped">
 
-                <a class="button is-warning is-flex" href="{{ route('characters.create') }}">
+                <a class="button is-warning is-flex" href="/@yield('entity_name')/crear">
                    
-                    <span class="m-auto">New character</span>
+                    <span class="m-auto">New @yield("entity_name")</span>
                     <span class="icon m-auto">
                         <i class="fa-solid fa-plus"></i>
                     </span>

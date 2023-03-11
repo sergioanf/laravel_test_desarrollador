@@ -58,7 +58,7 @@ class CharacterService
 
         foreach ($locations as $key => $value) {
 
-            $value->location_id = $value->id;
+           // $value->location_id = $value->id;
             unset( $value->id );
 
             $created = Carbon::parse( $value->created );
@@ -90,7 +90,7 @@ class CharacterService
             // print_r( (array)$value  );return ;
             
             $character = new Character( (array)$value );
-            $character = new Character( (array)$value );
+            
            
             $character->save();
 

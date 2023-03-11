@@ -2,7 +2,7 @@
 
 @section('title', 'Create Characters')
 @section('action', 'Home')
-@section('action_icon', 'fa-solid fa-house')
+@section('entity_name', 'characters')
 
 @section('content')
 

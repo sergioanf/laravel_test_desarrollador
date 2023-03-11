@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CharacterController;
+use App\Http\Controllers\LocationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,17 @@ Route::controller(CharacterController::class)->group(function(){
     Route::get("characters/{character}", "show")->name("characters.show");
     Route::put("characters/{character}/edit", "update")->name("characters.update");
     Route::delete("characters/{character}", "destroy")->name("characters.destroy");
+    
+});
+
+/* Rutas de Location */ 
+Route::controller(LocationController::class)->group(function(){
+    Route::get("locations", "index")->name("locations.index");
+    Route::get("locations/crear", "create")->name("locations.create");
+    Route::post("locations", "store")->name("locations.store");
+    Route::get("locations/{location}/edit", "edit")->name("locations.edit"); 
+    Route::get("locations/{location}", "show")->name("locations.show");
+    Route::put("locations/{location}/edit", "update")->name("locations.update");
+    Route::delete("locations/{character}", "destroy")->name("locations.destroy");
     
 });

@@ -20,6 +20,8 @@ class Location extends Model
         'name'
     ];
 
+    public $timestamps = false;
+    
     use HasFactory;
 
     public function characters()
