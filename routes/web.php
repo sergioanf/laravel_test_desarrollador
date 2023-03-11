@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 /* Rutas de Character */ 
 Route::controller(CharacterController::class)->group(function(){
-    Route::get("character", "index")->name("characters.index");
+    Route::get("characters", "index")->name("characters.index");
     Route::get("characters/crear", "create")->name("characters.create");
     Route::post("characters", "store")->name("characters.store");
     Route::get("characters/{character}/edit", "edit")->name("characters.edit"); 

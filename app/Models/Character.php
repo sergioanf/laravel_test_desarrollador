@@ -13,18 +13,17 @@ class Character extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'character_id',
         'gender',
         'image',
         'name',
         'species',
         'status',
         'created',
-        'location_id',
-        'created_at',
-        'updated_at'
+        'location_id'
     ];
 
+    public $timestamps = false;
+    
     use HasFactory; 
 
     public function episodes()
@@ -34,7 +33,7 @@ class Character extends Model
 
     public function location()
     {
-        return $this->hasOne(Location::class);
+        return $this->belongsTo(Location::class);
     }
 
 }

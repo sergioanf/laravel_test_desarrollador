@@ -12,22 +12,19 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('characters', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedBigInteger('character_id')->unique();
+            $table->bigIncrements('id')->unique();
             $table->string('gender', 10);
             $table->string('image', 250);
             $table->string('name', 50);
             $table->string('species', 20);
             $table->string('status', 20);
-            $table->string('created', 20);
+            $table->date('created')->default(date("Y-m-d"));
             $table->unsignedBigInteger('location_id')->default(null)->nullable();
 
             $table->foreign('location_id')
                 ->references('location_id')
                 ->on('locations')
                 ->onDelete('cascade');
-                
-            $table->timestamps();
     
         });
     }

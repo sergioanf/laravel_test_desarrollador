@@ -10,8 +10,12 @@ use App\Models\Location;
  
 class CharacterService
 { 
+
+    static public function isDataLoaded(){
+
+        return Character::find(20) != null; 
+    }
     static public function fetch() {
-       //graphql request model
 
        //graphql query, generado en postman
        $body = '{"query":"query Query($page: Int, $filter: FilterCharacter, $episodesPage2: Int, $episodesFilter2: FilterEpisode) {\\n  characters(page: $page, filter: $filter) {\\n    info {\\n      prev\\n      pages\\n      next\\n      count\\n    }\\n    results {\\n      created\\n      gender\\n      id\\n      image\\n      name\\n      location {\\n        id\\n      }\\n      species\\n      status\\n      episode {\\n        id\\n      }\\n    }\\n  }\\n  episodes(page: $episodesPage2, filter: $episodesFilter2) {\\n    info {\\n      count\\n      next\\n      pages\\n      prev\\n    }\\n    results {\\n      air_date\\n      created\\n      episode\\n      id\\n      name\\n      characters {\\n        id\\n      }\\n    }\\n  }\\n  locations {\\n    results {\\n      created\\n      dimension\\n      id\\n      name\\n      type\\n    }\\n  }\\n}\\n","variables":{}}';
@@ -75,7 +79,6 @@ class CharacterService
             $created = Carbon::parse( $value->created );
             $value->created = $created->format('Y-m-d H:i:s') ;    
 
-            $value->character_id = $value->id;
             unset( $value->id );
 
             $episodes = CharacterService::getCharacterEpisodes( $value->episode );
@@ -112,6 +115,5 @@ class CharacterService
         
         return  $episodes;
     }
-   
-   
+
 } 
