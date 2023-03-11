@@ -1,16 +1,16 @@
 @extends('layouts.plantilla') 
 
-@section('title', 'Create Location')
+@section('title', 'Create Episode')
 @section('action', 'Home')
-@section('entity_name', 'locations')
+@section('entity_name', 'episode')
 
 @section('content')
 
 
  <div class="container is-max-desktop has-background-white p-5">
-    <h1>Add Location</h1>
+    <h1>Add Episode</h1>
     
-    <form action="{{ route('locations.store') }}" method="POST">
+    <form action="{{ route('episodes.store') }}" method="POST">
         @csrf
 
         <div class="field">
@@ -26,11 +26,23 @@
         </div>
 
         <div class="field">
-            <label for="type" class="label">type:</label>
+            <label for="episode" class="label">episode:</label>
             <div class="control">
-                <input type="text" class="input" name="type" value="{{ old('type') }}"> 
+                <input type="text" class="input" name="episode" value="{{ old('episode') }}"> 
                 
-                @error('type')
+                @error('episode')
+                    <div class="has-text-danger">* {{ $message }}</div>
+                @enderror
+            </div>
+
+        </div>
+
+        <div class="field">
+            <label for="air_date" class="label">air date:</label>
+            <div class="control">
+                <input type="text" class="input" name="air_date" value="{{ old('air_date') }}"> 
+                
+                @error('air_date')
                     <div class="has-text-danger">* {{ $message }}</div>
                 @enderror
             </div>

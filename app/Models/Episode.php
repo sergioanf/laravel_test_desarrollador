@@ -13,12 +13,13 @@ class Episode extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'episode_id',
         'air_date',
-        'created',
         'episode',
         'name'
     ];
+
+    public $timestamps = false;
+    
     use HasFactory;
 
 

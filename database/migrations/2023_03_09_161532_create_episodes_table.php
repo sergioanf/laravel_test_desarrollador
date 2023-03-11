@@ -12,13 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('episodes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedBigInteger('episode_id')->unique();
-            $table->dateTime('air_date');
-            $table->dateTime('created');
+            $table->bigIncrements('id')->unique();
+            $table->date('air_date');
+            $table->dateTime('created')->default(date("Y-m-d"));
             $table->string('episode', 50);
             $table->string('name', 50);
-            $table->timestamps();
 
             /*
                 characters

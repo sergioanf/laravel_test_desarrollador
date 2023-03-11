@@ -16,7 +16,7 @@
         <div class="field">
             <label for="name" class="label">name:</label>
             <div class="control">
-                <input type="text" class="input" name="name"> 
+                <input type="text" class="input" name="name" value="{{ old('name') }}"> 
                 
                 @error('name')
                     <div class="has-text-danger">* {{ $message }}</div>
@@ -29,7 +29,7 @@
 
         <div class="field">
             <label for="species" class="label">specie:</label>
-            <input type="text" class="input" name="species"> 
+            <input type="text" class="input" name="species" value="{{ old('species') }}"> 
 
             @error('species')
               <div class="has-text-danger">* {{ $message }}</div>
@@ -41,7 +41,7 @@
 
         <div class="field">
             <label for="gender" class="label">gender:</label>
-            <input type="text" class="input" name="gender"> 
+            <input type="text" class="input" name="gender" value="{{ old('gender') }}"> 
 
             @error('gender')
                  <div class="has-text-danger">* {{ $message }}</div>
@@ -51,7 +51,7 @@
 
         <div class="field">
             <label for="status" class="label">status:</label>
-            <input type="text" class="input" name="status"> 
+            <input type="text" class="input" name="status" value="{{ old('status') }}"> 
 
             @error('status')
                  <div class="has-text-danger">* {{ $message }}</div>
@@ -61,7 +61,7 @@
 
         <div class="field">
             <label for="image" class="label">image url:</label>
-            <input type="text" class="input" name="image"> 
+            <input type="text" class="input" name="image" value="{{ old('image') }}"> 
             @error('image')
                   <div class="has-text-danger">* {{ $message }}</div>
             @enderror

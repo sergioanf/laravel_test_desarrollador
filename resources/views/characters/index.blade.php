@@ -25,6 +25,12 @@
       </a>
   </h2>
 
+  <h2 class="title has-background-white has-text-black m-0 p-2 is-6">
+    <a href="{{ route('episodes.index') }}">
+       Episodes list
+      </a>
+  </h2>
+
 
 <table class="table is-fullwidth is-bordered is-striped">
     <thead>
@@ -44,7 +50,11 @@
         <td class="has-text-centered">{{ $character->id }}</td>
         <td class="is-flex">
             <figure class="image is-64x64 my-auto mx-0 character-avatar">
-                <img src="{{ $character->image }}" class="is-rounded" width="100%" alt="{{$character->name}}">
+              <img  
+                src=" {{ 
+                (str_contains($character->image, 'http')) ? $character->image  
+                    : 'http://cdn.onlinewebfonts.com/svg/img_546302.png' }}" 
+                class="" width="100%" alt="{{$character->name}}">
             </figure>
 
             <a class="my-auto" href="{{ route('characters.show', $character->id) }}">

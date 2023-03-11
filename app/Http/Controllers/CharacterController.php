@@ -78,7 +78,7 @@ class CharacterController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreCharacter $request, string $id)
     {
         $character = Character::find($id);
        
