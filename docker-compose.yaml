@@ -4,19 +4,27 @@ services:
         build: 
             context: .
             dockerfile: Dockerfile
-        command: 'php artisan serve --host=0.0.0.0'
+        command: 'php artisan serve --host=0.0.0.0'   
         volumes:
             - .:/app
         ports:
-            - 8001:8000
+            - 8001:8000 
+
         depends_on: 
             - db
+
+        networks:
+            - my_network       
 
     queue:
         build: 
             context: .
             dockerfile: Dockerfile
         command: 'php artisan queue:work'
+
+        environment:
+            DB_HOST: db
+
         depends_on: 
             - db        
 
@@ -30,4 +38,9 @@ services:
         volumes:
             - ./storage/dbdata:/var/lib/mysql
         ports:
-            - 3306:3306
+            - 3309:3306
+        networks:
+            - my_network    
+
+networks:
+  my_network:

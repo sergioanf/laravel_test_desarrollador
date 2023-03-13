@@ -13,7 +13,7 @@ class CharacterService
 
     static public function isDataLoaded(){
 
-        return Character::find(20) != null; 
+        return count ( Character::limit(1)->get() ) > 0;
     }
     static public function fetch() {
 
@@ -99,7 +99,7 @@ class CharacterService
      
         }
 
-        return Character::all();
+        return Character::orderBy('id', 'desc')->get();
     }
 
     static private function getCharacterEpisodes( $rawEpisodes ){
